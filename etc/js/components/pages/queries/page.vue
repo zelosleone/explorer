@@ -10,6 +10,7 @@
       :app_params="app_params"
       :conn="conn">
     </pane-inspect>
+    <div class="handle" :style="`grid-column: ${handleColumn}`"></div>
   </div>
 </template>
 
@@ -18,7 +19,7 @@ export default { name: "page-queries" };
 </script>
 
 <script setup>
-import { defineProps, defineModel } from 'vue';
+import { defineProps, defineModel, computed } from 'vue';
 
 const props = defineProps({
   conn: {type: Object, required: true},
@@ -26,6 +27,14 @@ const props = defineProps({
 });
 
 const app_params = defineModel("app_params");
+
+const handleColumn = computed(() => {
+  let result = 4;
+  if (!app_params.value.sidebar) {
+    result --;
+  }
+  return result;
+});
 </script>
 
 <style scoped>
@@ -73,5 +82,12 @@ div.queries-right-pane {
     grid-row: 2;
     height: calc(60vh - var(--footer-height) - 3 * var(--gap));
   }
+}
+
+div.handle {
+  grid-row: 1;
+  width: 5px;
+  background-color: var(--panel-border);
+  cursor: col-resize;
 }
 </style>

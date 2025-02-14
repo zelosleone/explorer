@@ -1,4 +1,3 @@
-
 #app {
   width: 100%;
 }
@@ -9,6 +8,8 @@ div.split-pane-container {
 
   display: flex;
   flex-direction: row;
+  resize: horizontal;
+  overflow: auto;
 }
 
 div.split-pane {
@@ -40,7 +41,7 @@ div.handle-grab-box {
   z-index: 100;
   left: -1px;
   height: 100%;
-  width: 3px;
+  width: 5px;
   background-color: #4F95FF;
   opacity: 0;
   transition: opacity 0.2s ease-in-out;

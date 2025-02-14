@@ -26,6 +26,7 @@
         @scriptOpen="onScriptOpen">
       </pane-inspector>
     </div>
+    <div class="handle" :style="`grid-column: ${handleColumn}`"></div>
   </div>
 </template>
 
@@ -147,6 +148,14 @@ const inspectorColumn = computed(() => {
   return result;
 });
 
+const handleColumn = computed(() => {
+  let result = 4;
+  if (!appParams.value.sidebar) {
+    result --;
+  }
+  return result;
+});
+
 </script>
 
 <style scoped>
@@ -188,6 +197,13 @@ div.page-entities-script {
 div.page-entities-inspector {
   grid-row: 1;
   overflow-x: auto;
+}
+
+div.handle {
+  grid-row: 1;
+  width: 5px;
+  background-color: var(--panel-border);
+  cursor: col-resize;
 }
 
 </style>
